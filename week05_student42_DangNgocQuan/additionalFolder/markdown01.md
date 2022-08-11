@@ -9,10 +9,15 @@ Còn đây là text.
 
 # Character Style
 **Đây là chữ in đậm.**
+
 _Đây là in nghiêng nha_.
+
 **_Còn đây là vừa in đậm, vừa in nghiêng._**
+
 `Đây là chữ cho trong hộp.`
-~~ Còn đây là chữ gạch ngang, như bị xiên qua thân ấy.~~
+
+~~Còn đây là chữ gạch ngang, như bị xiên qua thân ấy.~~
+
 > Văn bản trích dẫn thì trông như này.
 
 # List
