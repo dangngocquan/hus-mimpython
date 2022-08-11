@@ -22,7 +22,7 @@ _Đây là in nghiêng nha_.
 2. Sublist 04
 
 # Link
-Bài tập tuần này nè: [Link] (https://mimpython.github.io/pythonSummerCourse/week-05-assignment/)
+Bài tập tuần này nè: [Link](https://mimpython.github.io/pythonSummerCourse/week-05-assignment/)
 
 # Image
-Picture: ![Alt](https://www.zerochan.net/Goku+Black)
+Picture: ![Link](https://www.zerochan.net/Goku+Black)
