@@ -1,12 +1,20 @@
+def isSpecialCharacter(ch):
+    if ord(ch) >= ord('a') and ord(ch) <= ord('z'):
+        return False
+    if ord(ch) >= ord('A') and ord(ch) <= ord('Z'):
+        return False
+    if ord(ch) >= ord('0') and ord(ch) <= ord('9'):
+        return False
+    return True
+
 def wordVietToEng(word):
     ans = ""
-    sign = ""
-    mark = ""
+    sign = ""   # Dấu của từ
+    mark = ""   # Lưu dấu câu, các kí tự đặc biệt
     for ch in word.lower():
         if ch in vietToEng.keys():
             ans += vietToEng[ch]
-        elif not ((ord(ch) >= ord('a') and ord(ch) <= ord('z')) or 
-                  (ord(ch) >= ord('0') and ord(ch) <= ord('9'))):
+        elif isSpecialCharacter(ch):
             mark += ch
         else:
             ans += ch
@@ -16,12 +24,44 @@ def wordVietToEng(word):
     return ans + sign + mark
 
 def stringVietToEng(words):
-    ans = words.split()
-    for i in range(len(ans)):
-        ans[i] = wordVietToEng(ans[i])
-    ans = " ".join(ans)
+    lst = words.split()
+    ans = ""
+    for i in range(len(lst)):
+        ans += wordVietToEng(lst[i]) + " "
     return ans
-        
+
+def wordEngToViet(word):
+    mark = ""
+    while len(word) > 0 and isSpecialCharacter(word[-1]):
+        mark = word[-1] + mark
+        word = word[:len(word)-1]
+    
+    sign = ""
+    if len(word) > 0 and word[-1] in "sfrxj":
+        sign = word[-1]
+        word = word[:len(word)-1]
+
+    newWord1 = word + ""
+    for i in range(len(word)-1):
+        if word[i:i+2] in engToViet.keys():
+            newWord1 = newWord1.replace(word[i:i+2], engToViet[word[i:i+2]])
+            
+    newWord2 = newWord1 + ""
+    tempListValue = []
+    for i in range(len(newWord1)):
+        if (newWord1[i] + sign) in engToViet.keys():
+            tempListValue.append(newWord1[i])
+    if len(tempListValue) > 0:
+        newWord2 = newWord2.replace(tempListValue[(len(tempListValue) + 1)//2 - 1], 
+                                    engToViet[tempListValue[(len(tempListValue)+1)//2 - 1] + sign])
+    return newWord2 + mark
+
+def stringEngToViet(words):
+    ans = ""
+    lst = words.split()
+    for i in range(len(lst)):
+        ans += wordEngToViet(lst[i]) + " "
+    return ans
 
 if __name__ == '__main__':
     vietToEng = {
@@ -157,8 +197,87 @@ if __name__ == '__main__':
         'ỵ' : 'j',
     }
     
+    engToViet = {
+        'aa' : 'â',
+        'aw' : 'ă',
+        'dd' : 'đ',
+        'ee' : 'ê',
+        'oo' : 'ô',
+        'ow' : 'ơ',
+        'uw' : 'ư',
+        'as' : 'á',
+        'af' : 'à',
+        'ar' : 'ả',
+        'ax' : 'ã',
+        'aj' : 'ạ',
+        'âs' : 'ấ',
+        'âf' : 'ầ',
+        'âr' : 'ẩ',
+        'âx' : 'ẩ',
+        'âj' : 'ậ',
+        'ăs' : 'ắ',
+        'ăf' : 'ằ',
+        'ăr' : 'ẳ',
+        'ăx' : 'ẵ',
+        'ăj' : 'ặ',
+        'es' : 'é',
+        'ef' : 'è',
+        'er' : 'ẻ',
+        'ex' : 'ẽ',
+        'ej' : 'ẹ',
+        'ês' : 'ế',
+        'êf' : 'ề',
+        'êr' : 'ể',
+        'êx' : 'ễ',
+        'êj' : 'ệ',
+        'is' : 'í',
+        'if' : 'ì',
+        'ir' : 'ỉ',
+        'ix' : 'ĩ',
+        'ij' : 'ị',
+        'os' : 'ó',
+        'of' : 'ò',
+        'or' : 'ỏ', 
+        'ox' : 'õ', 
+        'oj' : 'ọ',
+        'ôs' : 'ố',
+        'ôf' : 'ồ',
+        'ôr' : 'ổ',
+        'ôx' : 'ỗ',
+        'ôj' : 'ộ',
+        'ơs' : 'ớ',
+        'ơf' : 'ờ',
+        'ơr' : 'ở',
+        'ơx' : 'ỡ',
+        'ơj' : 'ợ',
+        'us' : 'ú',
+        'uf' : 'ù',
+        'ur' : 'ủ',
+        'ux' : 'ũ',
+        'uj' : 'ụ',
+        'ưs' : 'ứ',
+        'ưf' : 'ừ',
+        'ưr' : 'ử',
+        'ưx' : 'ữ',
+        'ưj' : 'ự',
+        'ys' : 'ý',
+        'yf' : 'ỳ',
+        'yr' : 'ỷ',
+        'yx' : 'ỹ',
+        'yj' : 'ỵ'
+    }
+    
     print(stringVietToEng('''Câu văn này chỉ mang tính chất minh họa, nhưng nó đã thực hiện 
                           được nhiệm vụ mà nó cần thực hiện, đó là minh họa =)).'''))
     # caau vawn nayf chir mang tinhs chaats minh hoaj, nhuwng nos ddax thuwcj hieenj 
     # dduwowcj nhieemj vuj maf nos caanf thuwcj hieenj, ddos laf minh hoaj =)).
+    
+    print(stringEngToViet("Kieems nguwowif yeeu ddi nhes!!!"))
+    # Kíêm người yêu đi nhé!!!
+    
+    print(stringEngToViet('''caau vawn nayf chir mang tinhs chaats minh hoaj, nhuwng nos ddax 
+                          thuwcj hieenj dduwowcj nhieemj vuj maf nos caanf thuwcj hieenj, ddos 
+                          laf minh hoaj =)).'''))
+    # câu văn này chỉ mang tính chất minh họa, nhưng nó đã thực hịên đựơc nhịêm vụ mà nó cần thực 
+    # hịên, đó là minh họa =)).
     
