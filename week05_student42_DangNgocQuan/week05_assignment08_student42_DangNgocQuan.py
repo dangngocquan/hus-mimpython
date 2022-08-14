@@ -1,3 +1,4 @@
+# Hàm kiểm tra kí tư đặc biệt
 def isSpecialCharacter(ch):
     if ord(ch) >= ord('a') and ord(ch) <= ord('z'):
         return False
@@ -7,10 +8,11 @@ def isSpecialCharacter(ch):
         return False
     return True
 
+# Hàm chuyển một từ tiếng Việt có dấu sang ctiếng Việt không dấu
 def wordVietToEng(word):
     ans = ""
     sign = ""   # Dấu của từ
-    mark = ""   # Lưu dấu câu, các kí tự đặc biệt
+    mark = ""   # Dấu câu
     for ch in word.lower():
         if ch in vietToEng.keys():
             ans += vietToEng[ch]
@@ -23,44 +25,55 @@ def wordVietToEng(word):
         
     return ans + sign + mark
 
+# Hàm chuyển một chuỗi gồm nhiều từ tiếng Việt có dấu sang chuỗi tiếng Việt không dấu
 def stringVietToEng(words):
     lst = words.split()
-    ans = ""
     for i in range(len(lst)):
-        ans += wordVietToEng(lst[i]) + " "
+        lst[i] = wordVietToEng(lst[i])
+    ans = " ".join(lst)
     return ans
 
+# Hàm chuyển một từ tiếng Việt không dấu sang tiếng Việt có dấu
 def wordEngToViet(word):
-    mark = ""
+    mark = ""       # Dấu câu 
     while len(word) > 0 and isSpecialCharacter(word[-1]):
         mark = word[-1] + mark
         word = word[:len(word)-1]
     
-    sign = ""
+    sign = ""       # Dấu của từ
     if len(word) > 0 and word[-1] in "sfrxj":
         sign = word[-1]
         word = word[:len(word)-1]
 
-    newWord1 = word + ""
+    word1 = word + ""
     for i in range(len(word)-1):
         if word[i:i+2] in engToViet.keys():
-            newWord1 = newWord1.replace(word[i:i+2], engToViet[word[i:i+2]])
+            word1 = word1.replace(word[i:i+2], engToViet[word[i:i+2]])
+    
+    if sign == "":
+        return word1 + mark
+    
+    lst1 = []
+    lst2 = []
+    for i in range(len(word1)):
+        if word1[i] in "ăâêôơư":
+            lst1.append(word1[i])
+        elif word1[i] in "aeiouy":
+            lst2.append(word1[i])
             
-    newWord2 = newWord1 + ""
-    tempListValue = []
-    for i in range(len(newWord1)):
-        if (newWord1[i] + sign) in engToViet.keys():
-            tempListValue.append(newWord1[i])
-    if len(tempListValue) > 0:
-        newWord2 = newWord2.replace(tempListValue[(len(tempListValue) + 1)//2 - 1], 
-                                    engToViet[tempListValue[(len(tempListValue)+1)//2 - 1] + sign])
-    return newWord2 + mark
-
+    if len(lst1) > 0:
+        word1 = word1.replace(lst1[len(lst1)//2], engToViet[lst1[len(lst1)//2] + sign])
+    elif len(lst2) > 0:
+        word1 = word1.replace(lst2[(len(lst2) - 1)//2], engToViet[lst2[(len(lst2) - 1)//2] + sign])
+    
+    return word1 + mark
+    
+# Hàm chuyển một chuỗi tiếng Việt không dấu sang chuỗi tiếng Việt có dấu
 def stringEngToViet(words):
-    ans = ""
     lst = words.split()
     for i in range(len(lst)):
-        ans += wordEngToViet(lst[i]) + " "
+        lst[i] = wordEngToViet(lst[i])
+    ans = " ".join(lst)
     return ans
 
 if __name__ == '__main__':
@@ -272,12 +285,15 @@ if __name__ == '__main__':
     # caau vawn nayf chir mang tinhs chaats minh hoaj, nhuwng nos ddax thuwcj hieenj 
     # dduwowcj nhieemj vuj maf nos caanf thuwcj hieenj, ddos laf minh hoaj =)).
     
+    print(stringVietToEng("Kiếm người yêu đi nhé!!!"))
+    # kieems nguwowif yeeu ddi nhes!!!
+    
     print(stringEngToViet("Kieems nguwowif yeeu ddi nhes!!!"))
-    # Kíêm người yêu đi nhé!!!
+    # Kiếm người yêu đi nhé!!!
     
     print(stringEngToViet('''caau vawn nayf chir mang tinhs chaats minh hoaj, nhuwng nos ddax 
                           thuwcj hieenj dduwowcj nhieemj vuj maf nos caanf thuwcj hieenj, ddos 
                           laf minh hoaj =)).'''))
-    # câu văn này chỉ mang tính chất minh họa, nhưng nó đã thực hịên đựơc nhịêm vụ mà nó cần thực 
-    # hịên, đó là minh họa =)).
+    # câu văn này chỉ mang tính chất minh họa, nhưng nó đã thực hiện được nhiệm vụ mà nó cần 
+    # thực hiện, đó là minh họa =)).
     
