@@ -1,8 +1,8 @@
 import cv2
 
 if __name__ == '__main__':
-    # Read image from "additionalFolder\\assigment02\\dietMoonCake.jpg"
-    img = cv2.imread(".\\week06_student42_DangNgocQuan\\additionalFolder\\assigment02\\dietMoonCake.jpg", 1)
+    # Read image from "additionalFolder\\assigment04\\dietMoonCake.jpg"
+    img = cv2.imread(".\\week06_student42_DangNgocQuan\\additionalFolder\\assigment04\\dietMoonCake.jpg", 1)
     (h, w, d) = img.shape
     
     # Resize image
@@ -23,5 +23,5 @@ if __name__ == '__main__':
         cv2.hconcat([imagesCrop[0][0], imagesCrop[1][0]])
     ])
     
-    # Save image at "additionalFolder\\assigment02\\dietMoonCake2.jpg"
-    cv2.imwrite(".\\week06_student42_DangNgocQuan\\additionalFolder\\assigment02\\dietMoonCake2.jpg", img2)
+    # Save image at "additionalFolder\\assigment04\\dietMoonCake2.jpg"
+    cv2.imwrite(".\\week06_student42_DangNgocQuan\\additionalFolder\\assigment04\\dietMoonCake2.jpg", img2)
