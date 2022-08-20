@@ -119,12 +119,12 @@ if __name__ == '__main__':
     #  [0. 0. 0.]]
     
     '''16. numpy.savetxt '''    # Lưu dữ liệu vào file txt
-    numpy.savetxt(".\\week06_student42_DangNgocQuan\\additionalFolder\\asignment02\\numpySavetxt.txt", 
+    numpy.savetxt(".\\week06_student42_DangNgocQuan\\additionalFolder\\assignment02\\numpySavetxt.txt", 
                   matrix, fmt="%d", delimiter=',', newline='\n')
     # Lưu matrix vào additionalFolder\\asignment02\\numpySavetxt.txt
     
     '''17. numpy.loadtxt '''    # Đọc dữ liệu từ file txt
-    print(numpy.loadtxt(".\\week06_student42_DangNgocQuan\\additionalFolder\\asignment02\\numpySavetxt.txt",
+    print(numpy.loadtxt(".\\week06_student42_DangNgocQuan\\additionalFolder\\assignment02\\numpySavetxt.txt",
                         dtype=int, delimiter=","))
     # [[1 2 3]
     #  [4 5 6]]
