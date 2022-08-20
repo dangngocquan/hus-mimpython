@@ -71,6 +71,7 @@ if __name__ == '__main__':
     ''' d) '''
     compareTwoWays()
     # time2 = 0.019769836578249843 time1
+    # ==> Tốc độ khi dùng numpy nhanh hơn rất nhiều so với tự viết hàm
     
     ''' e) '''
     # Đối với việc tính tổng các số thuộc cùng một hàng trong bảng số, thì tốc độ khi dùng numpy
