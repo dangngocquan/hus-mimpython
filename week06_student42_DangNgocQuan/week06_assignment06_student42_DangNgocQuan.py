@@ -6,7 +6,6 @@ def createAndSaveDataFrame01():
         "classCode" : [],
         "subjectCode" : []
     })
-    
     for index in range(len(exams.index)):
         subjectCode = exams["subjectCode"][index]
         strClassCodes = exams["classCode"][index]
@@ -31,7 +30,6 @@ def createAndSaveDataFrame02():
         "MSVList" : [],
         "numberStudents" : []
     })
-    
     for index in range(len(exams.index)):
         subjectCode = exams["subjectCode"][index]
         strClassCodes = exams["classCode"][index]
@@ -56,7 +54,6 @@ def createAndSaveDataFrame03():
         "MSVList" : [],
         "numberStudents" : []
     })
-    
     for index in range(len(exams.index)):
         subjectCode = exams["subjectCode"][index]
         strClassCodes = exams["classCode"][index]
@@ -79,7 +76,6 @@ def createAndSaveDataFrame04():
     dict = {
         
     }
-    
     for index in range(len(exams.index)):
         subjectCode = exams["subjectCode"][index]
         strClassCodes = exams["classCode"][index]
@@ -109,6 +105,7 @@ def createAndSaveDataFrame04():
     
     dataFrame04 = dataFrame04.sort_values(by=["MSV"])
     dataFrame04.to_csv(".\\week06_student42_DangNgocQuan\\additionalFolder\\assignment06\\output\\dataFrame04.csv", index=False)
+
 
 def createAndSaveDataFrame05():
     dataFrame05 = pandas.DataFrame({
@@ -149,8 +146,6 @@ def createAndSaveDataFrame05():
 if __name__ == '__main__':
     '''a) Tạo các DataFrame được liệt kê ở trên, chọn tên biến và tên cột phù hợp. 
     Ngoài ra, các dòng trong mỗi DataFrame cũng nên được sắp xếp theo một thứ tự hợp lý.'''
-    # Các dataFrame sẽ được lưu ở folder additionalFolder\\assignment06\\output
-    
     path01 = ".\\week06_student42_DangNgocQuan\\additionalFolder\\assignment06\\data\\exams.csv"
     exams = pandas.read_csv(path01)
     
@@ -160,13 +155,11 @@ if __name__ == '__main__':
             Cột 3: một mã môn học tương ứng với mã lớp học kể trên'''
     # createAndSaveDataFrame01()
     
-    
     '''2. DataFrame thứ hai
             Cột 1: một mã lớp học
             Cột 2: một list tất cả mã sinh viên đăng ký lớp học đó
             Cột 3: số sinh viên đăng ký lớp học đó'''
     # createAndSaveDataFrame02()
-    
     
     '''3. DataFrame thứ ba
             Cột 1: một mã môn học
@@ -174,12 +167,11 @@ if __name__ == '__main__':
             Cột 3: số sinh viên đăng ký môn học đó'''     
     # createAndSaveDataFrame03()
     
-    
     '''4. DataFrame thứ tư
             Cột 1: một mã sinh viên
             Cột 2: một list tất cả lớp học mà sinh viên đó đăng ký
             Cột 3: một list tất cả môn học mà sinh viên đó đăng ký'''
-    createAndSaveDataFrame04()
+    # createAndSaveDataFrame04()
     
     '''5. DataFrame thứ năm
             Cột 1: một mã môn học
@@ -187,3 +179,8 @@ if __name__ == '__main__':
             Cột 3: một list tất cả sinh viên cùng đăng ký hai môn học kể trên
             Cột 4: số sinh viên cùng đăng ký hai môn học kể trên'''
     # createAndSaveDataFrame05()
+    
+    
+    '''b) Xuất những DataFrame này (với định dạng file phù hợp) vào thư mục bổ sung trong thư mục nộp bài.'''
+    # Các dataFrame sẽ được lưu ở folder additionalFolder\\assignment06\\output
+    
