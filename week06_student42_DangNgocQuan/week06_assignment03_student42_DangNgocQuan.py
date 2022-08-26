@@ -7,23 +7,16 @@ class Point:
         self.y = y
         
     def plot(self):
-        x1 = numpy.linspace(self.x-1, self.x+1, 11)
-        f1 = lambda x : x - x + self.y
-        y1 = f1(x1)
-        y2 = numpy.linspace(self.y-1, self.y+1, 11)
-        f2 = lambda y : y - y + self.x
-        x2 = f2(y2)
-        pyplot.figure(figsize=(5,5))
-        pyplot.plot(x1, y1, '-', color='blue', label="Point")
-        pyplot.plot(x2, y2, '-', color='blue', label="Point")
+        pyplot.plot([self.x], self.y, 'o', color='blue', label="Point")
         pyplot.xlabel("x", fontsize="14")
         pyplot.ylabel("y", fontsize="14")
+        pyplot.legend(fontsize=14)
         pyplot.title("Point")
         pyplot.savefig(f".\\week06_student42_DangNgocQuan\\additionalFolder\\assignment03\\point_{self.x}_{self.y}.png")
         pyplot.show()
    
 class Line:
-    def __init__(self, pointA, pointB):
+    def __init__(self, pointA=Point, pointB=Point):
         self.pointA = pointA
         self.pointB = pointB
         
