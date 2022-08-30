@@ -23,7 +23,7 @@ def getNameScores(names):
     return scores
 
 if __name__ == '__main__':
-    names = readFile("Files\\week03_assignment03_names.txt", 'r', ',')
+    names = readFile(".\\week03_student42_DangNgocQuan\\additionalFolder\\assignment03\\week03_assignment03_names.txt", 'r', ',')
     reformat(names)
     names.sort()
     scores = getNameScores(names)

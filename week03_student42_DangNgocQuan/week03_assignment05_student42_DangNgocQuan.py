@@ -62,10 +62,10 @@ if __name__ == '__main__':
     firstPlayerChoices = []
     secondPlayerChoices = []
     
-    with open("Files\\week03_assignment05\\player01.txt", 'r') as f:
+    with open(".\\week03_student42_DangNgocQuan\\additionalFolder\\assignment05\\player01.txt", 'r') as f:
         firstPlayerChoices = f.read().splitlines()
         f.close()
-    with open("Files\\week03_assignment05\\player02.txt", 'r') as f:
+    with open(".\\week03_student42_DangNgocQuan\\additionalFolder\\assignment05\\player02.txt", 'r') as f:
         secondPlayerChoices = f.read().splitlines()
         f.close()
     
