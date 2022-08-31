@@ -148,7 +148,7 @@ if __name__ == '__main__':
     '''19. numpy.isclose '''    # Kiểm tra xem các phần tử của 2 mảng có "gần" nhau không
     array1 = numpy.array([1, 6, 13, 19])
     array2 = numpy.array([0, 3, 12, 21])
-    print(numpy.isclose(array1, array2, atol=2))
+    print(numpy.isclose(array1, array2))
     # [ True False  True  True]
     
     

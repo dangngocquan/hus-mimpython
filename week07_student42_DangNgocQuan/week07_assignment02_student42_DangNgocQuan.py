@@ -1,6 +1,5 @@
 import math
 
-
 class Parallelogram():
     def __init__(self, baseSide=4, height=2, inclination=60):
         assert baseSide > 0 and height > 0 and (0 < inclination and inclination < 180)
@@ -111,3 +110,4 @@ if __name__ == '__main__':
     print(circle)               # Circle[radius=3]        
     print(circle.perimeter())   # 18.84955592153876
     print(circle.area())        # 28.274333882308138
+    
