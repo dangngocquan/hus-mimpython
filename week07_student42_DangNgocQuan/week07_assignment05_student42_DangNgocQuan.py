@@ -1,5 +1,4 @@
 import math
-
 class Polynomial:
     def __init__(self, coefficientOfTerms):
         self.degree = len(coefficientOfTerms) - 1
